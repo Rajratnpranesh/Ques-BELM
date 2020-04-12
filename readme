@@ -1,0 +1,23 @@
+This is the training code for the 1st place solution of the Kaggle "TensorFlow 2.0 Question Answering" competition. A brief description of method was presented in https://www.kaggle.com/c/tensorflow2-question-answering/discussion/127551
+
+The code relies on pytorch and apex. The hardware requirement is 4 x RTX Titan.
+
+Please read the "readme.txt" for input preparation.
+
+Steps for training and validation:
+1.1) Download pytorch_model.bin from https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-pytorch_model.bin, and copy it to huggingface_pretrained/bert-base-uncased/
+1.2) Go to code/1_1/ and run "run.sh" and "run_hnm.sh" for hard negative mining
+2.1) Copy pytorch_model.bin from huggingface_pretrained/bert-base-uncased/ to code/1_1/bert-base-uncased_1/model/
+2.2) Go to code/1_1/bert-base-uncased_1/ and run "run.sh"
+3.1) Download Squad2.0 data and copy to squad_finetuning/squad2
+3.2) Download pytorch_model.bin from https://s3.amazonaws.com/models.huggingface.co/bert/albert-xxlarge-v2-pytorch_model.bin, and copy it to huggingface_pretrained/albert-xxlarge-v2/
+3.3) Go to squad_finetuning/albert-xxlarge-v2/1/ and run "run.sh" for Squad finetuning
+3.4) Copy the pytorch_model.bin from squad_finetuning/albert-xxlarge-v2/1/output/ to code/albert-xxlarge-v2_2/model/ and code/albert-xxlarge-v2_3/model/
+3.5) Go to code/albert-xxlarge-v2_2/ and code/albert-xxlarge-v2_3/ and run "run.sh"
+4.1) Download pytorch_model.bin from https://s3.amazonaws.com/models.huggingface.co/bert/bert-large-uncased-whole-word-masking-finetuned-squad-config.json, and copy it to code/bert-large-uncased_4 and code/bert-large-uncased_5
+4.2) Go to code/bert-large-uncased_4 and code/bert-large-uncased_5 and run "run.sh"
+5) Go to validation/ and run "run.sh", the F1 scores together with optimized thresholds can be found in predictions.txt (There is already a predictions.txt for reference). The test kernel is almost same as the valid.py, the major difference is to manually set the thresholds based on the values generated in predictions.txt and tuned on the public LB.
+
+Thanks to https://github.com/huggingface/transformers for the complete and easy-to-use NLP library. All the transformers/ folders were copied from there.
+Thanks to https://www.kaggle.com/sakami/tfqa-pytorch-baseline, which becomes the backbone of my training and validation code.
+Thanks to https://github.com/google-research-datasets/natural-questions/blob/master/nq_eval.py for validation code.

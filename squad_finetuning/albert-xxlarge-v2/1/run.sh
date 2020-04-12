@@ -1,0 +1,24 @@
+python -m torch.distributed.launch --nproc_per_node=4 run_squad.py \
+    --model_type albert \
+    --model_name_or_path ../../../huggingface_pretrained/albert-xxlarge-v2/ \
+    --do_train \
+    --do_eval \
+    --do_lower_case \
+    --version_2_with_negative \
+    --train_file ../../squad2/train-v2.0.json \
+    --predict_file ../../squad2/dev-v2.0.json \
+    --learning_rate=1e-5 \
+    --num_train_epochs=2 \
+    --max_seq_length=384 \
+    --max_query_length=64 \
+    --doc_stride=128 \
+    --output_dir output/ \
+    --per_gpu_eval_batch_size=6   \
+    --per_gpu_train_batch_size=6   \
+    --overwrite_output_dir \
+    --logging_steps=9999999 \
+    --save_steps=9999999 \
+    --seed=1001 \
+    --fp16 \
+    --threads=10 \
+    > out.txt
