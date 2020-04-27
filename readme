@@ -1,4 +1,4 @@
-This is the training code for the 1st place solution of the Kaggle "TensorFlow 2.0 Question Answering" competition. A brief description of method was presented in https://www.kaggle.com/c/tensorflow2-question-answering/discussion/127551
+This is the training code for the Ques_BELM paper.
 
 The code relies on pytorch and apex. The hardware requirement is 4 x RTX Titan.
 
