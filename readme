@@ -19,5 +19,4 @@ Steps for training and validation:
 5) Go to validation/ and run "run.sh", the F1 scores together with optimized thresholds can be found in predictions.txt (There is already a predictions.txt for reference). The test kernel is almost same as the valid.py, the major difference is to manually set the thresholds based on the values generated in predictions.txt and tuned on the public LB.
 
 Thanks to https://github.com/huggingface/transformers for the complete and easy-to-use NLP library. All the transformers/ folders were copied from there.
-Thanks to https://www.kaggle.com/sakami/tfqa-pytorch-baseline, which becomes the backbone of my training and validation code.
 Thanks to https://github.com/google-research-datasets/natural-questions/blob/master/nq_eval.py for validation code.
